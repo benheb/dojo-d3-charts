@@ -16,6 +16,7 @@
         <!-- endbower -->
         <!-- endbuild -->
         <link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
+        <link rel="stylesheet" href="../../bower_components/c3/c3.css">
 
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
@@ -24,11 +25,22 @@
         <script>
           dojoConfig = {
             paths: {
-              "scripts": "/scripts"
+              "scripts": "/scripts",
+              "c3": "/scripts/c3",
+              "Chart": "/scripts/chart",
+              "_": "/bower_components/lodash/dist/lodash",
+
+              "use": "/bower_components/use-amd/"
             },
             aliases:[
-              ['d3', 'scripts/d3']
+              ['d3', 'scripts/d3'],
+              ['c3', 'scripts/c3']
             ],
+            use: {
+              "Chart": {
+                attach: "Chart"
+              }
+            },
             async: true,
             parseOnLoad: true
           }
@@ -42,8 +54,8 @@
 
 
         <div class="container">
+          <h2>Dojo + d3 + Chart</h2>
           <div id="map"></div>
-
           <div id="chart"></div>
         </div>
         <!-- build:js scripts/vendor.js -->

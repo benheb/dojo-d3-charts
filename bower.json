@@ -4,7 +4,9 @@
   "dependencies": {
     "bootstrap": "~3.0.3",
     "jquery": "~1.11.0",
-    "use-amd": "~0.4.0"
+    "use-amd": "~0.4.0",
+    "lodash": "~2.4.1",
+    "c3": "~0.3.0"
   },
   "devDependencies": {}
 }

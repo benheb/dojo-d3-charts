@@ -1,6 +1,6 @@
 var map;
-require(["scripts/d3", "scripts/c3", "esri/map", "esri/layers/ArcGISTiledMapServiceLayer", 
-    "esri/layers/FeatureLayer", "dojo/domReady!"], function(d3, c3, Map, TiledLayer, FeatureLayer) { 
+require(["_", "scripts/d3", "c3", "Chart", "esri/map", "esri/layers/ArcGISTiledMapServiceLayer", 
+    "esri/layers/FeatureLayer", "dojo/domReady!"], function(_, d3, c3, Chart, Map, TiledLayer, FeatureLayer) { 
  
   var featureLayer = new FeatureLayer("http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Airports/FeatureServer/0",{
     outFields: ["*"]
@@ -9,13 +9,19 @@ require(["scripts/d3", "scripts/c3", "esri/map", "esri/layers/ArcGISTiledMapServ
   map = new Map("map", {
     center: [-92.049, 41.485],
     zoom: 4,
-    basemap: "streets",
+    basemap: "topo",
     smartNavigation: false
   });
  
-  console.log('d3', d3);
-  console.log('c3', c3);
-  console.log('featureLayer', featureLayer);
- 
   map.addLayer(featureLayer);
+  window.c3 = c3; //AMD HACK! Need c3 to be defined in Chart.js
+
+  //just get the data and chart it!
+  var url = featureLayer.url + '/query?where=1%3D1&returnGeometry=false&outFields=*&orderByFields=&f=json';
+  d3.json(url, function(error, json) {
+    if (error) return console.warn(error);
+    var data = json;
+    var selectedAttribute = "ELEV";
+    Chart.buildOptions(data, selectedAttribute);
+  });
 });
