@@ -12,7 +12,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- endbower -->
         <!-- endbuild -->
         <link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
@@ -24,13 +24,7 @@
         <script>
           dojoConfig = {
             paths: {
-              "use": "/bower_components/use-amd/use",
               "scripts": "/scripts"
-            },
-            use: {
-              "c3": {
-                attach: "c3"
-              }
             },
             async: true,
             parseOnLoad: true
@@ -52,8 +46,6 @@
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="bower_components/use-amd/use.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
